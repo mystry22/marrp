@@ -13,6 +13,15 @@ const checkEmail = async(data)=>{
     return user;
 }
 
+const getDetails = async function(data){
+    const user = await User.findOne(data);
+    return user;
+}
+
+const updatesignin = async function(email){
+    const update = await User.updateOne({email : email}, {$set : {signedin: 'yes'}});
+}
+
 // const deleteAccount = async function(data){
 //     const deleteOne = await UserSchema.deleteOne(data);
 //     return true;
@@ -100,6 +109,8 @@ const checkEmail = async(data)=>{
 
 module.exports.signup = signup;
 module.exports.checkEmail = checkEmail;
+module.exports.getDetails = getDetails;
+module.exports.updatesignin = updatesignin;
 
 
 

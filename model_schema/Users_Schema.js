@@ -39,6 +39,12 @@ const User = new mongoose.Schema({
         min: 2,
         max: 1005
     },
+
+    signedin: {
+        type: String,
+        min: 2,
+        max: 1005
+    },
    
 
  

@@ -2,9 +2,12 @@ const express = require('express');
 const app = express();
 const db_conn = require('./config/db');
 const bodyPaser = require('body-parser');
+const cors = require('cors');
+
 const token = require('./routes/token');
 const signup = require('./routes/signup');
-const cors = require('cors');
+const auth = require('./routes/login');
+
 
 
 //initialisations
@@ -16,8 +19,9 @@ app.use(bodyPaser.json());
 
 
 //routes
-app.use('/api/token',token);
+app.use('/api/token/',token);
 app.use('/api/signup/',signup);
+app.use('/api/auth/',auth);
 
 const PORT = process.env.PORT || 3333;
 

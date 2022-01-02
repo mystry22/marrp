@@ -19,16 +19,18 @@ router.post('/register',async(req,res)=>{
     phone: req.body.phone,
     email: req.body.email,
     reg_date : toDate(),
-    uniquekey: hashedPassword
+    uniquekey: hashedPassword,
+    signedin: 'yes'
   }
 
   checkEmail(check).then(feed=>{
     if(feed){
-      res.json('user already has an account');
+      res.status(403).json('user already has an account');
     }else{
       signup(data);
      signToken(mail).then(token=>{
-         res.json(token);
+       
+         res.status(200).json(token);
      });
      
     }
